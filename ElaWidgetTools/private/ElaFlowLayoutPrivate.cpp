@@ -23,7 +23,7 @@ int ElaFlowLayoutPrivate::_doLayout(const QRect& rect, bool testOnly) const
     int y = effectiveRect.y();
     int lineHeight = 0;
 
-    for (QLayoutItem* item : std::as_const(_itemList))
+    for (QLayoutItem* item : qAsConst(_itemList))
     {
         const QWidget* wid = item->widget();
         int spaceX = q->horizontalSpacing();

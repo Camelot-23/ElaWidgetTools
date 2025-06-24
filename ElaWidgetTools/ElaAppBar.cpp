@@ -725,7 +725,9 @@ bool ElaAppBar::eventFilter(QObject* obj, QEvent* event)
             if (mouseEvent->button() == Qt::LeftButton)
             {
                 d->_updateCursor(d->_edges);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
                 window()->windowHandle()->startSystemResize(Qt::Edges(d->_edges));
+#endif
             }
         }
         else
@@ -737,7 +739,9 @@ bool ElaAppBar::eventFilter(QObject* obj, QEvent* event)
                 d->_clickTimer = clickTimer;
                 if (offset > 300)
                 {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
                     window()->windowHandle()->startSystemMove();
+#endif
                 }
             }
         }

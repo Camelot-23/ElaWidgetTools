@@ -3,6 +3,7 @@
 #include <QEvent>
 #include <QPainter>
 #include <QPainterPath>
+#include <QApplication>
 #include <QPropertyAnimation>
 
 #include "ElaTheme.h"
@@ -18,9 +19,15 @@ ElaToggleButton::ElaToggleButton(QWidget* parent)
     d->_themeMode = eTheme->getThemeMode();
     d->_pToggleAlpha = 0;
     setMouseTracking(true);
-    setFixedSize(80, 32);
-    QFont font = this->font();
-    font.setPixelSize(15);
+    // setFixedSize(80, 32);
+    setFixedHeight(32);
+    QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+    sizePolicy.setHorizontalStretch(0);
+    sizePolicy.setVerticalStretch(0);
+    sizePolicy.setHeightForWidth(this->sizePolicy().hasHeightForWidth());
+    setSizePolicy(sizePolicy);
+
+    const auto font = qApp->font();
     setFont(font);
     setObjectName("ElaToggleButton");
     setStyleSheet("#ElaToggleButton{background-color:transparent;}");

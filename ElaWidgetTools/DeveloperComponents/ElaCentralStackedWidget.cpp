@@ -255,7 +255,7 @@ void ElaCentralStackedWidget::paintEvent(QPaintEvent* event)
             painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
             QTransform transform;
             transform.translate(rect().center().x(), 0);
-            if (abs(_pFlipAnimationRatio) >= 90)
+            if (abs((int)_pFlipAnimationRatio) >= 90)
             {
                 transform.rotate(-180 + _pFlipAnimationRatio, Qt::YAxis);
             }
@@ -265,7 +265,7 @@ void ElaCentralStackedWidget::paintEvent(QPaintEvent* event)
             }
             transform.translate(-rect().center().x(), 0);
             painter.setTransform(transform);
-            if (abs(_pFlipAnimationRatio) >= 90)
+            if (abs((int)_pFlipAnimationRatio) >= 90)
             {
                 painter.drawPixmap(rect(), _targetStackPix);
             }

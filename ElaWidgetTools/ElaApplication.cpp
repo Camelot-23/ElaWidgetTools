@@ -90,7 +90,7 @@ void ElaApplication::init()
     QFontDatabase::addApplicationFont(":/include/Font/ElaAwesome.ttf");
     //默认字体
     QFont font = qApp->font();
-    font.setPixelSize(13);
+    font.setPixelSize(15);
     font.setFamily("Microsoft YaHei");
     font.setHintingPreference(QFont::PreferNoHinting);
     qApp->setFont(font);

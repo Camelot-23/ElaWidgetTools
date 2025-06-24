@@ -124,7 +124,7 @@ QSize ElaFlowLayout::sizeHint() const
 QSize ElaFlowLayout::minimumSize() const
 {
     QSize size;
-    for (const QLayoutItem* item : std::as_const(d_ptr->_itemList))
+    for (const QLayoutItem* item : qAsConst(d_ptr->_itemList))
     {
         size = size.expandedTo(item->minimumSize());
     }

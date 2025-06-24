@@ -2,6 +2,7 @@
 
 #include <QPainter>
 #include <QPainterPath>
+#include <QApplication>
 
 #include "ElaTheme.h"
 #include "private/ElaPushButtonPrivate.h"
@@ -29,8 +30,7 @@ ElaPushButton::ElaPushButton(QWidget* parent)
     d->_darkTextColor = ElaThemeColor(ElaThemeType::Dark, BasicText);
     setMouseTracking(true);
     setFixedHeight(38);
-    QFont font = this->font();
-    font.setPixelSize(15);
+    const auto font = qApp->font();
     setFont(font);
     setObjectName("ElaPushButton");
     setStyleSheet("#ElaPushButton{background-color:transparent;}");

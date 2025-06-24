@@ -1,6 +1,7 @@
 #include "ElaText.h"
 
 #include <QContextMenuEvent>
+#include <QApplication>
 #include <QPainter>
 
 #include "ElaTheme.h"
@@ -14,9 +15,9 @@ ElaText::ElaText(QWidget* parent)
     d->_pElaIcon = ElaIconType::None;
     setObjectName("ElaText");
     setStyleSheet("#ElaText{background-color:transparent;}");
-    QFont textFont = font();
+    QFont textFont = qApp->font();
     textFont.setLetterSpacing(QFont::AbsoluteSpacing, d->_textSpacing);
-    textFont.setPixelSize(28);
+    // textFont.setPixelSize(28);
     setFont(textFont);
     setWordWrap(true);
     d->_themeMode = eTheme->getThemeMode();

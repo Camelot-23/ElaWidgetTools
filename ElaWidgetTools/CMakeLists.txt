@@ -47,6 +47,10 @@ else ()
     )
 endif ()
 
+if (ELAWIDGETTOOLS_BUILD_STATIC_LIB)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE DELAWIDGETTOOLS_BUILD_STATIC_LIBRARY)
+endif()
+
 FILE(GLOB EXPORT_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h)
 target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

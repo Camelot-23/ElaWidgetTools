@@ -11,7 +11,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 
 #在这里配置QT路径 例如 D:/Qt/6.6.2/msvc2019_64
-SET(QT_SDK_DIR C:/Qt/5.15.2/mingw81_64 CACHE PATH "QT SDK DIR" FORCE)
+# SET(QT_SDK_DIR C:/Qt/5.15.2/mingw81_64 CACHE PATH "QT SDK DIR" FORCE)
+# SET(QT_SDK_DIR /home/elot/Qt/5.15.2/ CACHE PATH "QT SDK DIR" FORCE)
+SET(QT_SDK_DIR /home/rpdzkj/development/qt-libs/a311d CACHE PATH "QT SDK DIR" FORCE)
 SET(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/Install CACHE PATH "Installation path" FORCE)
 
 option(BUILD_ELAPACKETIO "Build ElaPacketIO" OFF)
@@ -25,7 +27,11 @@ if (WIN32 AND BUILD_ELAPACKETIO)
     add_definitions(-DBUILD_WITH_ELAPACKETIO)
     add_subdirectory(ElaPacketIO)
 endif ()
-add_subdirectory(ElaWidgetToolsExample)
+
+option(ELAWIDGETTOOLS_BUILD_EXAMPLE "Build ElaWidgetTools Example" OFF)
+if (ELAWIDGETTOOLS_BUILD_EXAMPLE)
+    add_subdirectory(ElaWidgetToolsExample)
+endif()
 
 if (${QT_VERSION} VERSION_LESS 6.1.0)
     set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.ElaWidgetTools)

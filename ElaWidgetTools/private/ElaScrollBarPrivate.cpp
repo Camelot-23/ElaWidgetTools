@@ -60,7 +60,7 @@ void ElaScrollBarPrivate::_scroll(Qt::KeyboardModifiers modifiers, int delta)
     {
         stepsToScroll = QApplication::wheelScrollLines() * offset * singleStep;
     }
-    if (abs(_scrollValue - q->value()) > abs(stepsToScroll * _pSpeedLimit))
+    if (abs((int)(_scrollValue - q->value())) > abs((int)(stepsToScroll * _pSpeedLimit)))
     {
         _scrollValue = q->value();
     }

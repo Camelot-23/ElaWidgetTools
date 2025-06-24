@@ -7,6 +7,10 @@
 #define ELA_EXPORT Q_DECL_EXPORT
 #else
 #define ELA_EXPORT Q_DECL_IMPORT
+#ifdef  DELAWIDGETTOOLS_BUILD_STATIC_LIBRARY
+#undef ELA_EXPORT
+#define ELA_EXPORT
+#endif
 #endif
 
 #define Q_PROPERTY_CREATE(TYPE, M)                          \
